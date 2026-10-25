@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Trading Coach — тренер трейдера криптофьючерсов для Windows</title>
 <meta name="description" content="Trading Coach — программа для Windows: контроль риска, биржевой стакан для скальпинга, психолог и дневник трейдера. Binance, Bybit, OKX, Bitget. 7 дней бесплатно.">
-<meta name="keywords" content="Trading Coach, тренер трейдера, криптофьючерсы, скальпинг, биржевой стакан, риск-менеджмент, дневник трейдера, психология трейдинга, Binance, Bybit, OKX, Bitget">
 <link rel="canonical" href="https://azatiusupov91-coder.github.io/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0e0e10">
@@ -25,10 +24,8 @@
 <meta name="twitter:image" content="https://azatiusupov91-coder.github.io/assets/og.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Trading Coach", "operatingSystem": "Windows 10, Windows 11", "applicationCategory": "FinanceApplication", "description": "Trading Coach — программа для Windows: контроль риска, биржевой стакан для скальпинга, психолог и дневник трейдера. Binance, Bybit, OKX, Bitget. 7 дней бесплатно.", "url": "https://azatiusupov91-coder.github.io/", "image": "https://azatiusupov91-coder.github.io/assets/og.jpg", "inLanguage": ["ru", "en"]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Trading Coach", "operatingSystem": "Windows 10, Windows 11", "applicationCategory": "FinanceApplication", "description": "Trading Coach — программа для Windows: контроль риска, биржевой стакан для скальпинга, психолог и дневник трейдера. Binance, Bybit, OKX, Bitget. 7 дней бесплатно.", "url": "https://azatiusupov91-coder.github.io/", "image": "https://azatiusupov91-coder.github.io/assets/og.jpg", "inLanguage": ["ru", "en"], "offers": {"@type": "AggregateOffer", "priceCurrency": "RUB", "lowPrice": "2490", "highPrice": "19990", "offerCount": "4"}}</script>
+<link rel="stylesheet" href="assets/fonts/manrope.css">
 <style>
 /* Layout: graphite + champagne, centered and quiet. Hero = words only; below it a WebGL laptop that rises, opens and boots the app as you scroll.
    Words of every heading arrive one by one with the scroll; a soft light follows the cursor; background = two slow lights and drifting dust. */
@@ -240,7 +237,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 button.copy { background: none; border: 1px solid var(--line); color: var(--mute); border-radius: 999px; padding: 8px 16px; font: 400 13px var(--f); cursor: pointer; transition: color .3s, border-color .3s }
 button.copy:hover { color: var(--fg); border-color: var(--mute) }
 footer { padding-block: 36px; border-top: 1px solid var(--line); font-size: 13px; color: #6b6862; text-align: center }
-footer .wrap { display: grid; gap: 6px }
+footer .wrap { display: grid; gap: 10px; max-width: 900px }
+footer .legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; font-size: 14px }
+footer .legal a { color: var(--mute); text-decoration: none; border-bottom: 1px solid var(--line); transition: color .3s, border-color .3s }
+footer .legal a:hover { color: var(--fg); border-color: var(--gold) }
+.terms a { color: var(--gold) }
 
 
 html[lang="ru"] [lang="en"], html[lang="en"] [lang="ru"] { display: none !important }
@@ -368,9 +369,9 @@ html[lang="ru"] [lang="en"], html[lang="en"] [lang="ru"] { display: none !import
     <p class="muted" data-w><span lang="ru">Первые 7 дней — бесплатно, без ключа и оплаты.</span><span lang="en">The first 7 days are free, no key or payment.</span></p>
     <div class="tiers" id="tiers"></div>
     <div class="terms" data-r>
-      <div><b><span lang="ru">USDT, сеть TRC20</span><span lang="en">USDT on TRC20</span></b><span lang="ru">Реквизиты присылает продавец в Telegram.</span><span lang="en">The seller sends payment details in Telegram.</span></div>
-      <div><b><span lang="ru">Комиссию сети платит покупатель</span><span lang="en">The buyer pays the network fee</span></b><span lang="ru">Должна прийти полная сумма тарифа.</span><span lang="en">The full tariff amount must arrive.</span></div>
-      <div><b><span lang="ru">Без возврата после выдачи ключа</span><span lang="en">No refunds once the key is issued</span></b><span lang="ru">Поэтому сначала 7 дней бесплатно.</span><span lang="en">That is why you get 7 free days first.</span></div>
+      <div><b><span lang="ru">Цены в рублях</span><span lang="en">Prices in rubles</span></b><span lang="ru">Способ оплаты уточняйте у продавца в Telegram.</span><span lang="en">Ask the seller on Telegram how to pay.</span></div>
+      <div><b><span lang="ru">7 дней бесплатно</span><span lang="en">7 days free</span></b><span lang="ru">Пробный период без ключа и оплаты.</span><span lang="en">The trial needs no key or payment.</span></div>
+      <div><b><span lang="ru">Возврат по закону</span><span lang="en">Refunds by law</span></b><span lang="ru">По закону о защите прав потребителей — подробнее в <a href="payment.html">условиях оплаты и возврата</a>.</span><span lang="en">Under Russian consumer protection law — see <a href="payment.html">payment and refund terms</a>.</span></div>
     </div>
   </div>
 </section>
@@ -382,7 +383,7 @@ html[lang="ru"] [lang="en"], html[lang="en"] [lang="ru"] { display: none !import
     <div class="steplist" id="steplist">
       <div class="step" data-r><h3 data-w><span lang="ru">Напишите продавцу</span><span lang="en">Message the seller</span></h3><p lang="ru" data-w>@mr_Aziy пришлёт установщик. Пробный период начнётся при первом запуске.</p><p lang="en" data-w>@mr_Aziy sends the installer. The trial starts on first launch.</p></div>
       <div class="step" data-r><h3 data-w><span lang="ru">Скопируйте код компьютера</span><span lang="en">Copy the machine code</span></h3><p lang="ru" data-w>Он в окне активации. Ключ привязывается к этому ПК.</p><p lang="en" data-w>It is in the activation window. The key is tied to this PC.</p></div>
-      <div class="step" data-r><h3 data-w><span lang="ru">Оплатите тариф</span><span lang="en">Pay for a term</span></h3><p lang="ru" data-w>USDT по TRC20, затем пришлите хэш перевода.</p><p lang="en" data-w>USDT on TRC20, then send the transaction hash.</p></div>
+      <div class="step" data-r><h3 data-w><span lang="ru">Оплатите тариф</span><span lang="en">Pay for a term</span></h3><p lang="ru" data-w>Способ оплаты подскажет продавец.</p><p lang="en" data-w>The seller will tell you how to pay.</p></div>
       <div class="step" data-r><h3 data-w><span lang="ru">Вставьте ключ</span><span lang="en">Paste the key</span></h3><p lang="ru" data-w>Подписка включится сразу.</p><p lang="en" data-w>The subscription starts at once.</p><span class="mono">TC1-…</span></div>
     </div>
   </div>
@@ -431,13 +432,20 @@ html[lang="ru"] [lang="en"], html[lang="en"] [lang="ru"] { display: none !import
 
 <footer>
   <div class="wrap">
-    <span>Trading Coach · <span lang="ru">программа для Windows</span><span lang="en">Windows app</span> · t.me/tradingcoach_app</span>
-    <span lang="ru">Не является инвестиционной рекомендацией. Торговля криптофьючерсами связана с высоким риском потери средств.</span>
-    <span lang="en">Not investment advice. Crypto futures trading carries a high risk of loss.</span>
+    <nav class="legal" aria-label="Документы">
+      <a href="oferta.html"><span lang="ru">Лицензионный договор</span><span lang="en">License agreement</span></a>
+      <a href="payment.html"><span lang="ru">Оплата и возврат</span><span lang="en">Payment and refunds</span></a>
+      <a href="privacy.html"><span lang="ru">Политика конфиденциальности</span><span lang="en">Privacy policy</span></a>
+    </nav>
+    <span>Trading Coach · <span lang="ru">программа для Windows</span><span lang="en">Windows app</span> · t.me/tradingcoach_app · 18+</span>
+    <span lang="ru">Trading Coach — программа для самоконтроля и дисциплины трейдера. Она не является инвестиционной рекомендацией, не оказывает брокерских услуг и услуг по управлению активами; все торговые решения принимает пользователь. Торговля криптофьючерсами связана с высоким риском потери средств.</span>
+    <span lang="en">Trading Coach is a self-discipline tool for traders. It is not investment advice and provides no brokerage or asset management services; all trading decisions are made by the user. Crypto futures trading carries a high risk of loss.</span>
+    <span lang="ru">Binance, Bybit, OKX, Bitget и TradingView — товарные знаки их правообладателей. Trading Coach не связан с ними; названия указаны только для описания совместимости.</span>
+    <span lang="en">Binance, Bybit, OKX, Bitget and TradingView are trademarks of their owners. Trading Coach is not affiliated with them; the names only describe compatibility.</span>
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/js/three.min.js"></script>
 
 <script>
 (function () {
@@ -452,17 +460,18 @@ html[lang="ru"] [lang="en"], html[lang="en"] [lang="ru"] { display: none !import
   var vh = innerHeight;
 
   /* ---------- тарифы (как в seller.json) ---------- */
-  var PRICES = [{ m: 1, p: 29 }, { m: 3, p: 75 }, { m: 6, p: 135 }, { m: 12, p: 239 }];
+  var PRICES = [{ m: 1, p: 2490 }, { m: 3, p: 6490 }, { m: 6, p: 11490 }, { m: 12, p: 19990 }];
+  function rub(v) { return String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
   function renderTiers() {
     var en = root.lang === "en", base = PRICES[0].p;
     document.getElementById("tiers").innerHTML = PRICES.map(function (t) {
       var per = t.p / t.m, save = Math.round((1 - per / base) * 100);
-      var perS = (per % 1 ? per.toFixed(1) : String(per));
+      var perS = rub(per) + "\u00a0₽";
       var term = en ? t.m + (t.m === 1 ? " month" : " months") : t.m + " " + (t.m === 1 ? "месяц" : t.m < 5 ? "месяца" : "месяцев");
-      var perTxt = en ? "≈ " + perS + " / month" : "≈ " + perS.replace(".", ",") + " в месяц";
+      var perTxt = en ? "≈ " + perS + " / month" : "≈ " + perS + " в месяц";
       return '<div class="tier' + (t.m === 12 ? ' best" data-badge="' + (en ? "Best value" : "Выгоднее всего") : "") + '" data-r>' +
         '<span class="term">' + term + "</span>" +
-        '<span class="pr">' + t.p + "<small> USDT</small></span>" +
+        '<span class="pr">' + rub(t.p) + "<small> ₽</small></span>" +
         '<span class="per">' + perTxt + (save > 0 ? " · <b>−" + save + "%</b>" : "") + "</span></div>";
     }).join("");
     reveals = Array.prototype.slice.call(document.querySelectorAll("[data-r]"));
