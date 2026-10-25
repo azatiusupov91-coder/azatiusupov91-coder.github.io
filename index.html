@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trading Coach — тренер трейдера криптофьючерсов для Windows</title>
+<meta name="description" content="Trading Coach — программа для Windows: контроль риска, биржевой стакан для скальпинга, психолог и дневник трейдера. Binance, Bybit, OKX, Bitget. 7 дней бесплатно.">
+<meta name="keywords" content="Trading Coach, тренер трейдера, криптофьючерсы, скальпинг, биржевой стакан, риск-менеджмент, дневник трейдера, психология трейдинга, Binance, Bybit, OKX, Bitget">
+<link rel="canonical" href="https://azatiusupov91-coder.github.io/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e0e10">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Trading Coach">
+<meta property="og:url" content="https://azatiusupov91-coder.github.io/">
+<meta property="og:title" content="Trading Coach — тренер трейдера криптофьючерсов для Windows">
+<meta property="og:description" content="Trading Coach — программа для Windows: контроль риска, биржевой стакан для скальпинга, психолог и дневник трейдера. Binance, Bybit, OKX, Bitget. 7 дней бесплатно.">
+<meta property="og:image" content="https://azatiusupov91-coder.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trading Coach — тренер трейдера криптофьючерсов для Windows">
+<meta name="twitter:description" content="Trading Coach — программа для Windows: контроль риска, биржевой стакан для скальпинга, психолог и дневник трейдера. Binance, Bybit, OKX, Bitget. 7 дней бесплатно.">
+<meta name="twitter:image" content="https://azatiusupov91-coder.github.io/assets/og.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Trading Coach", "operatingSystem": "Windows 10, Windows 11", "applicationCategory": "FinanceApplication", "description": "Trading Coach — программа для Windows: контроль риска, биржевой стакан для скальпинга, психолог и дневник трейдера. Binance, Bybit, OKX, Bitget. 7 дней бесплатно.", "url": "https://azatiusupov91-coder.github.io/", "image": "https://azatiusupov91-coder.github.io/assets/og.jpg", "inLanguage": ["ru", "en"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: graphite + champagne, centered and quiet. Hero = words only; below it a WebGL laptop that rises, opens and boots the app as you scroll.
+   Words of every heading arrive one by one with the scroll; a soft light follows the cursor; background = two slow lights and drifting dust. */
+:root {
+  --bg: #0e0e10;
+  --panel: #151518;
+  --fg: #ece8e1;
+  --mute: #8f8b84;
+  --line: #26262a;
+  --gold: #c9b48a;
+  --gold-hi: #e6d3a8;
+  --f: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  color-scheme: dark;
+}
+* { box-sizing: border-box }
+[hidden] { display: none !important }
+html { scroll-behavior: smooth }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 300 17px/1.7 var(--f); -webkit-font-smoothing: antialiased; overflow-x: hidden }
+a { color: inherit }
+h1, h2, h3, p, figure { margin: 0 }
+img, video { display: block; max-width: 100% }
+img { height: auto }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)) }
+.kicker { font-size: 12px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--gold) }
+h2 { font-weight: 300; font-size: clamp(32px, 4.6vw, 56px); line-height: 1.12; letter-spacing: -.03em; text-wrap: balance }
+h2 em, h1 em { font-style: normal; color: var(--gold) }
+.muted { color: var(--mute) }
+section { position: relative; scroll-margin-top: 64px }
+.center { text-align: center; display: grid; justify-items: center; gap: 22px }
+
+/* фон */
+#bg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none }
+main, .top, footer { position: relative; z-index: 1 }
+/* буквы под курсором слегка светятся */
+.ch { transition: color 1.2s var(--ease), text-shadow 1.2s var(--ease) }
+.ch.hot { color: #fff6e6; text-shadow: 0 0 14px rgba(230, 211, 168, .55); transition-duration: .12s }
+.ch.warm { color: #f6ecd9; text-shadow: 0 0 10px rgba(230, 211, 168, .28); transition-duration: .2s }
+em .ch.hot, .gold .ch.hot { color: #f4e2b8 }
+
+/* слова появляются по одному */
+.wd { display: inline-block }
+.js [data-w] .wd { opacity: 0; transform: translateY(.5em); transition: opacity .8s var(--ease), transform .9s var(--ease), filter .9s var(--ease) }
+.js h1[data-w] .wd, .js h2[data-w] .wd { filter: blur(8px) }
+.js [data-w] .wd.in { opacity: 1; transform: none; filter: none }
+.js [data-r] { will-change: transform, opacity }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; border-bottom: 1px solid transparent; transition: background .5s var(--ease), border-color .5s }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 11; background: var(--bg) }
+.top.solid { background: rgba(14, 14, 16, .72); backdrop-filter: saturate(140%) blur(16px); -webkit-backdrop-filter: saturate(140%) blur(16px); border-bottom-color: var(--line) }
+.top .wrap { display: flex; align-items: center; gap: 28px; padding-block: 14px }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 13px; letter-spacing: .32em; text-transform: uppercase; text-decoration: none }
+.brand img { width: 26px; height: 26px; border-radius: 7px }
+.top nav { display: flex; gap: 26px; margin-left: auto; font-size: 14px; color: var(--mute) }
+.top nav a { text-decoration: none; position: relative; transition: color .3s }
+.top nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform .4s var(--ease) }
+.top nav a:hover { color: var(--fg) }
+.top nav a:hover::after { transform: scaleX(1) }
+.lang { display: flex; gap: 2px; font-size: 12px; font-weight: 500; letter-spacing: .1em }
+.lang button { background: none; border: 0; color: var(--mute); padding: 6px 8px; cursor: pointer; font: inherit; border-radius: 999px; transition: color .3s, background .3s }
+.lang button[aria-pressed="true"] { color: var(--bg); background: var(--gold) }
+@media (max-width: 760px) { .top nav { display: none } .lang { margin-left: auto } }
+
+/* hero: только слова */
+.hero { min-height: 100vh; min-height: 100svh; display: grid; align-content: center; padding-block: 120px 140px }
+.hero .copy { text-align: center; display: grid; justify-items: center; gap: 26px; will-change: transform, opacity }
+.hero h1 { font-weight: 300; font-size: clamp(42px, 7.4vw, 104px); line-height: 1.02; letter-spacing: -.04em; max-width: 11em; text-wrap: balance }
+.hero .lead { color: var(--mute); max-width: 31em; font-size: 19px }
+.ctas { display: flex; flex-wrap: wrap; gap: 14px 26px; align-items: center; justify-content: center }
+.facts { display: flex; gap: 10px 22px; flex-wrap: wrap; justify-content: center; font-size: 13px; color: var(--mute); letter-spacing: .04em }
+.facts span + span::before { content: "·"; margin-right: 22px; color: var(--gold) }
+.cue { position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%); display: grid; justify-items: center; gap: 12px;
+  font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--mute) }
+.cue i { width: 1px; height: 46px; background: linear-gradient(var(--gold), transparent); transform-origin: top; animation: cue 2.4s var(--ease) infinite }
+@keyframes cue { 0% { transform: scaleY(0); opacity: 1 } 60% { transform: scaleY(1); opacity: 1 } 100% { transform: scaleY(1); opacity: 0 } }
+.hero .wd { opacity: 0; transform: translateY(.5em); filter: blur(10px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease), filter 1.1s var(--ease) }
+.hero .wd.in { opacity: 1; transform: none; filter: none }
+.hero .ctas, .hero .facts { opacity: 0; transform: translateY(14px); transition: opacity 1s var(--ease) .9s, transform 1s var(--ease) .9s }
+.hero.ready .ctas, .hero.ready .facts { opacity: 1; transform: none }
+@media (max-width: 760px) { .facts span + span::before { display: none } .hero { padding-block: 96px 120px } }
+
+/* витрина: ноутбук в 3D */
+.show { height: 460vh }
+.show .stick { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; will-change: opacity, transform }
+#gl { position: absolute; inset: 0; width: 100%; height: 100% }
+.show .cap { position: absolute; left: 0; right: 0; top: clamp(76px, 12vh, 130px); text-align: center; display: grid; justify-items: center; gap: 16px; pointer-events: none; will-change: opacity, transform }
+.show .fallback { position: absolute; inset: 14vh 6vw; display: grid; place-items: center }
+.show .fallback img { border-radius: 14px; border: 1px solid var(--line); max-height: 100% }
+.btn.mag { will-change: transform }
+/* buttons */
+.btn { --b: var(--gold); position: relative; display: inline-flex; align-items: center; gap: 12px; padding: 16px 30px; border-radius: 999px;
+  font: 400 15px var(--f); letter-spacing: .01em; text-decoration: none; color: var(--gold); border: 1px solid rgba(201, 180, 138, .55);
+  overflow: hidden; isolation: isolate; transition: color .5s var(--ease), border-color .5s, transform .5s var(--ease), box-shadow .5s }
+.btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(120deg, var(--gold), var(--gold-hi));
+  transform: translateY(101%); border-radius: inherit; transition: transform .55s var(--ease) }
+.btn .arr { display: inline-block; transition: transform .5s var(--ease) }
+.btn:hover { color: var(--bg); border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 14px 40px -14px rgba(201, 180, 138, .55) }
+.btn:hover::before { transform: translateY(0) }
+.btn:hover .arr { transform: translateX(5px) }
+.btn:active { transform: translateY(0) scale(.98) }
+.btn.solid { color: var(--bg); border-color: transparent; background: linear-gradient(120deg, var(--gold), var(--gold-hi)) }
+.btn.solid::before { background: var(--fg) }
+/* медленный блик по главной кнопке */
+.btn.solid::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; z-index: -1;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent); animation: sheen 5.5s var(--ease) infinite 1.5s }
+@keyframes sheen { 0% { left: -60% } 30%, 100% { left: 130% } }
+.link { color: var(--mute); text-decoration: none; font-size: 15px; position: relative; transition: color .3s }
+.link::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(.3); transform-origin: left; transition: transform .45s var(--ease) }
+.link:hover { color: var(--fg) }
+.link:hover::after { transform: scaleX(1) }
+.btn:focus-visible, .link:focus-visible, .lang button:focus-visible, summary:focus-visible, button.copy:focus-visible, .top a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px }
+
+/* manifesto: слова загораются по мере прокрутки */
+.manifesto { padding-block: 18vh }
+.manifesto p { font-weight: 300; font-size: clamp(28px, 4.4vw, 54px); line-height: 1.22; letter-spacing: -.025em; max-width: 18em; margin: 0 auto; text-align: center }
+.manifesto .w { opacity: .16; transition: opacity .25s linear }
+.manifesto .w.gold { color: var(--gold) }
+
+/* reveal: элементы выплывают и уходят при прокрутке в обе стороны */
+.js [data-r] { will-change: transform, opacity }
+
+/* demo */
+.demo { padding-block: 12vh }
+.video { margin-top: 48px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #000; aspect-ratio: 16 / 9 }
+.video video { width: 100%; height: 100% }
+
+/* feature story */
+.story { padding-block: 10vh }
+.story .head { margin-bottom: 8vh }
+.chapters { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px }
+.chapter { min-height: 72vh; display: grid; align-content: center; gap: 16px; opacity: .28; transition: opacity .6s var(--ease) }
+.chapter.on { opacity: 1 }
+.chapter .num { font-size: 12px; letter-spacing: .3em; color: var(--gold) }
+.chapter h3 { font-weight: 400; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -.02em }
+.chapter p { color: var(--mute); max-width: 26em }
+.chapter .pic { display: none }
+.screens { position: sticky; top: 18vh; height: 64vh; display: grid; align-items: center }
+.screens figure { grid-area: 1 / 1; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); opacity: 0; transform: scale(.96) translateY(18px);
+  transition: opacity .8s var(--ease), transform 1s var(--ease); box-shadow: 0 50px 120px -50px rgba(201, 180, 138, .3) }
+.screens figure.on { opacity: 1; transform: none }
+.screens img { width: 100%; height: auto }
+.dots { position: absolute; right: -28px; top: 50%; transform: translateY(-50%); display: grid; gap: 10px }
+.dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--line); transition: background .4s, transform .4s }
+.dots i.on { background: var(--gold); transform: scale(1.4) }
+@media (max-width: 900px) {
+  .chapters { grid-template-columns: minmax(0, 1fr) }
+  .screens { display: none }
+  .chapter { min-height: 0; opacity: 1; padding-block: 28px; text-align: center; justify-items: center }
+  .chapter .pic { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); margin-top: 8px }
+}
+.also { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 10vh; border-top: 1px solid var(--line) }
+.also div { padding: 34px 28px 0; display: grid; gap: 8px; text-align: center; border-left: 1px solid var(--line) }
+.also div:first-child { border-left: 0 }
+.also b { font-weight: 500 }
+.also span { color: var(--mute); font-size: 15px }
+@media (max-width: 760px) { .also { grid-template-columns: minmax(0, 1fr) } .also div { border-left: 0; padding: 24px 0; border-bottom: 1px solid var(--line) } }
+
+/* prices */
+.prices { padding-block: 16vh 10vh }
+.tiers { width: 100%; margin-top: 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: rgba(21, 21, 24, .6); backdrop-filter: blur(6px) }
+.tier { display: grid; gap: 10px; padding: 34px 20px 30px; text-align: center; border-left: 1px solid var(--line); position: relative; font-variant-numeric: tabular-nums; transition: background .5s var(--ease) }
+.tier:first-child { border-left: 0 }
+.tier:hover { background: rgba(201, 180, 138, .05) }
+.tier .term { font-size: 13px; color: var(--mute); letter-spacing: .08em }
+.tier .pr { font-weight: 300; font-size: clamp(40px, 4.4vw, 56px); line-height: 1; letter-spacing: -.03em }
+.tier .pr small { font-size: 13px; color: var(--mute); letter-spacing: .02em }
+.tier .per { font-size: 13px; color: var(--mute) }
+.tier .per b { color: var(--gold); font-weight: 500 }
+.tier.best { background: rgba(201, 180, 138, .07) }
+.tier.best::before { content: attr(data-badge); position: absolute; top: 12px; left: 50%; transform: translateX(-50%); font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); white-space: nowrap }
+@media (max-width: 760px) { .tiers { grid-template-columns: repeat(2, minmax(0, 1fr)) } .tier:nth-child(3) { border-left: 0 } .tier:nth-child(n+3) { border-top: 1px solid var(--line) } }
+.terms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 40px; text-align: center; font-size: 14px; color: var(--mute) }
+.terms b { color: var(--fg); font-weight: 500; display: block; margin-bottom: 4px }
+@media (max-width: 760px) { .terms { grid-template-columns: minmax(0, 1fr); gap: 18px } }
+
+/* steps */
+.steps { padding-block: 12vh }
+.steplist { margin-top: 56px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); position: relative; counter-reset: s }
+.steplist::before { content: ""; position: absolute; top: 18px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: .5;
+  transform: scaleX(var(--line-p, 1)); transform-origin: left }
+.step { display: grid; justify-items: center; gap: 12px; text-align: center; padding: 0 14px }
+.step::before { counter-increment: s; content: counter(s); width: 37px; height: 37px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); font-size: 13px; background: var(--bg); position: relative }
+.step h3 { font-weight: 500; font-size: 17px }
+.step p { color: var(--mute); font-size: 14px }
+.mono { font: 500 13px ui-monospace, Consolas, monospace; color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 9px }
+@media (max-width: 760px) { .steplist { grid-template-columns: minmax(0, 1fr); gap: 34px } .steplist::before { display: none } }
+
+/* faq */
+.faq { padding-block: 10vh }
+.faq .list { margin: 48px auto 0; max-width: 780px; border-top: 1px solid var(--line); text-align: left; width: 100% }
+.faq details { border-bottom: 1px solid var(--line) }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; padding: 22px 0; font-weight: 400; font-size: 17px }
+.faq summary::-webkit-details-marker { display: none }
+.faq summary i { width: 14px; height: 14px; position: relative; flex: none; margin-top: 6px }
+.faq summary i::before, .faq summary i::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--gold); transition: transform .45s var(--ease) }
+.faq summary i::after { transform: rotate(90deg) }
+.faq details[open] summary i::after { transform: rotate(0) }
+.faq .ans { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s var(--ease) }
+.faq details[open] .ans { grid-template-rows: 1fr }
+.faq .ans > div { overflow: hidden }
+.faq .ans p { color: var(--mute); padding-bottom: 22px; max-width: 62ch }
+
+/* final */
+.final { padding-block: 18vh 14vh }
+.final h2 { font-size: clamp(36px, 6vw, 76px) }
+.contact { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center }
+.handle { font-size: 20px; font-weight: 500; letter-spacing: .02em; user-select: all }
+button.copy { background: none; border: 1px solid var(--line); color: var(--mute); border-radius: 999px; padding: 8px 16px; font: 400 13px var(--f); cursor: pointer; transition: color .3s, border-color .3s }
+button.copy:hover { color: var(--fg); border-color: var(--mute) }
+footer { padding-block: 36px; border-top: 1px solid var(--line); font-size: 13px; color: #6b6862; text-align: center }
+footer .wrap { display: grid; gap: 6px }
+
+
+html[lang="ru"] [lang="en"], html[lang="en"] [lang="ru"] { display: none !important }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto }
+  .hero .wd, .hero .ctas, .hero .facts { opacity: 1 !important; transform: none !important; filter: none !important }
+  .show { height: auto } .show .stick { position: relative; height: 100vh; height: 100svh }
+  .btn.solid::after, .cue i { animation: none }
+  .manifesto .w { opacity: 1 }
+  .chapter { opacity: 1 }
+  * { transition-duration: .01s !important }
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<header class="top" id="top-bar">
+  <div class="wrap">
+    <a class="brand" href="#hero"><img src="assets/icon.png" alt="" width="26" height="26">Trading Coach</a>
+    <nav>
+      <a href="#demo"><span lang="ru">Демо</span><span lang="en">Demo</span></a>
+      <a href="#features"><span lang="ru">Возможности</span><span lang="en">Features</span></a>
+      <a href="#prices"><span lang="ru">Цены</span><span lang="en">Pricing</span></a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button id="lang-ru" type="button" data-l="ru" aria-pressed="true">RU</button>
+      <button id="lang-en" type="button" data-l="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="hero">
+  <div class="copy wrap" id="hero-copy">
+    <p class="kicker" data-load><span lang="ru">Программа для Windows · криптофьючерсы</span><span lang="en">Windows app · crypto futures</span></p>
+    <h1 data-load><span lang="ru">Дисциплина — <em>ваше преимущество</em></span><span lang="en">Discipline is <em>your edge</em></span></h1>
+    <p class="lead" data-load><span lang="ru">Личный тренер трейдера криптофьючерсов: контроль риска, биржевой стакан, психолог и дневник в одном окне.</span><span lang="en">A personal coach for crypto futures traders: risk control, an exchange order book, a psychologist and a journal in one window.</span></p>
+    <div class="ctas">
+      <a class="btn solid mag" href="https://t.me/mr_Aziy" target="_blank" rel="noopener"><span lang="ru">Попробовать 7 дней бесплатно</span><span lang="en">Try 7 days free</span><span class="arr">→</span></a>
+      <a class="link" href="#demo"><span lang="ru">Смотреть демо</span><span lang="en">Watch the demo</span></a>
+    </div>
+    <div class="facts"><span>Binance · Bybit · OKX · Bitget</span><span lang="ru">Бумажный счёт</span><span lang="en">Paper account</span><span>Windows 10 / 11</span></div>
+  </div>
+  <div class="cue" aria-hidden="true"><span lang="ru">Листайте</span><span lang="en">Scroll</span><i></i></div>
+</section>
+
+<section class="show" id="show" aria-label="Trading Coach">
+  <div class="stick">
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <div class="fallback" id="gl-fallback" hidden><img src="assets/scalp.jpg" alt="Trading Coach" width="1400" height="788"></div>
+    <div class="cap" id="cap1">
+      <p class="kicker"><span lang="ru">Знакомьтесь</span><span lang="en">Meet</span></p>
+      <h2 data-w><span lang="ru">Откройте — <em>и торгуйте спокойно</em></span><span lang="en">Open it — <em>and trade calmly</em></span></h2>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto wrap" aria-label="Manifesto">
+  <p id="manifesto" lang="ru">Программа не торгует за вас. Она держит риск в рамках, не даёт отыгрываться после стопа и помогает увидеть, где вы сильны. <span class="g">Меньше эмоций. Больше системы.</span></p>
+  <p id="manifesto-en" lang="en">The app does not trade for you. It keeps risk in bounds, stops revenge trading after a stop-loss and shows you where you are strong. <span class="g">Fewer emotions. More system.</span></p>
+</section>
+
+<section class="demo" id="demo">
+  <div class="wrap center">
+    <p class="kicker" data-r><span lang="ru">Демо</span><span lang="en">Demo</span></p>
+    <h2 data-w><span lang="ru">50 секунд — <em>и всё понятно</em></span><span lang="en">50 seconds <em>to see it all</em></span></h2>
+    <p class="muted" data-w><span lang="ru">Запись с бумажного счёта на симулированном рынке.</span><span lang="en">Recorded on a paper account in a simulated market. Captions are in Russian.</span></p>
+  </div>
+  <div class="wrap"><div class="video" data-r="zoom"><video id="demo-video" controls preload="metadata" playsinline poster="assets/trade.jpg"><source src="assets/demo.mp4" type="video/mp4"><source src="assets/demo.webm" type="video/webm"></video></div></div>
+</section>
+
+<section class="story" id="features">
+  <div class="wrap">
+    <div class="head center">
+      <p class="kicker" data-r><span lang="ru">Возможности</span><span lang="en">Features</span></p>
+      <h2 data-w><span lang="ru">Всё для торговли <em>и дисциплины</em></span><span lang="en">Trading <em>and discipline</em></span></h2>
+    </div>
+    <div class="chapters">
+      <div class="texts">
+        <article class="chapter" data-i="0"><span class="num">01 / 05</span>
+          <h3 data-w><span lang="ru">Биржевой стакан</span><span lang="en">Exchange order book</span></h3>
+          <p data-w><span lang="ru">Лента сделок прямо в стакане, кластеры объёмов и стакан спота рядом с фьючерсами.</span><span lang="en">Trade tape inside the book, volume clusters and the spot book next to futures.</span></p>
+          <figure class="pic"><img src="assets/scalp.jpg" alt="" loading="lazy" width="1400" height="788"></figure></article>
+        <article class="chapter" data-i="1"><span class="num">02 / 05</span>
+          <h3 data-w><span lang="ru">Один клик — стоп и тейк сразу</span><span lang="en">One click — stop and take-profit at once</span></h3>
+          <p data-w><span lang="ru">Заявка ставится кликом по цене и сразу получает защиту. Забыть про стоп не получится.</span><span lang="en">Click a price to place an order with protection attached. Forgetting the stop is impossible.</span></p>
+          <figure class="pic"><img src="assets/trade.jpg" alt="" loading="lazy" width="1400" height="788"></figure></article>
+        <article class="chapter" data-i="2"><span class="num">03 / 05</span>
+          <h3 data-w><span lang="ru">Правила риска, которые нельзя обойти</span><span lang="en">Risk rules you cannot skip</span></h3>
+          <p data-w><span lang="ru">Лимит убытка за день и за сделку, пауза после серии стопов. Лимит достигнут — торговля закрыта до завтра.</span><span lang="en">Daily and per-trade loss limits, a pause after a losing streak. Hit the limit and trading locks until tomorrow.</span></p>
+          <figure class="pic"><img src="assets/lock.jpg" alt="" loading="lazy" width="1400" height="788"></figure></article>
+        <article class="chapter" data-i="3"><span class="num">04 / 05</span>
+          <h3 data-w><span lang="ru">Чек-ин и психолог</span><span lang="en">Check-in and a psychologist</span></h3>
+          <p data-w><span lang="ru">30 секунд о сне, стрессе и концентрации перед началом дня. После сделки — разбор: что было по плану и где ваши сильные стороны.</span><span lang="en">30 seconds on sleep, stress and focus before the day starts. After each trade, a review of what went to plan and where you are strong.</span></p>
+          <figure class="pic"><img src="assets/psych.jpg" alt="" loading="lazy" width="1400" height="788"></figure></article>
+        <article class="chapter" data-i="4"><span class="num">05 / 05</span>
+          <h3 data-w><span lang="ru">Терминал с графиком TradingView</span><span lang="en">Terminal with a TradingView chart</span></h3>
+          <p data-w><span lang="ru">Таймфреймы, индикаторы и рисование. Объём позиции считается из риска и стопа.</span><span lang="en">Timeframes, indicators and drawing tools. Position size comes from your risk and stop.</span></p>
+          <figure class="pic"><img src="assets/term.jpg" alt="" loading="lazy" width="1400" height="788"></figure></article>
+      </div>
+      <div class="screens" aria-hidden="true">
+        <figure class="on"><img src="assets/scalp.jpg" alt="" width="1400" height="788"></figure>
+        <figure><img src="assets/trade.jpg" alt="" width="1400" height="788"></figure>
+        <figure><img src="assets/lock.jpg" alt="" width="1400" height="788"></figure>
+        <figure><img src="assets/psych.jpg" alt="" width="1400" height="788"></figure>
+        <figure><img src="assets/term.jpg" alt="" width="1400" height="788"></figure>
+        <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="also" data-r>
+      <div><b>Binance · Bybit · OKX · Bitget</b><span lang="ru">Ключи API только с правом торговли</span><span lang="en">Trade-only API keys</span></div>
+      <div><b><span lang="ru">Бумажный счёт</span><span lang="en">Paper account</span></b><span lang="ru">Тренировка на реальных котировках</span><span lang="en">Practice on live quotes</span></div>
+      <div><b><span lang="ru">Данные на вашем ПК</span><span lang="en">Data stays on your PC</span></b><span lang="ru">Сделки и ключи хранятся локально</span><span lang="en">Trades and keys stay local</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="prices" id="prices">
+  <div class="wrap center">
+    <p class="kicker" data-r><span lang="ru">Цены</span><span lang="en">Pricing</span></p>
+    <h2 data-w><span lang="ru">Одна версия. <em>Вы выбираете срок.</em></span><span lang="en">One version. <em>You choose the term.</em></span></h2>
+    <p class="muted" data-w><span lang="ru">Первые 7 дней — бесплатно, без ключа и оплаты.</span><span lang="en">The first 7 days are free, no key or payment.</span></p>
+    <div class="tiers" id="tiers"></div>
+    <div class="terms" data-r>
+      <div><b><span lang="ru">USDT, сеть TRC20</span><span lang="en">USDT on TRC20</span></b><span lang="ru">Реквизиты присылает продавец в Telegram.</span><span lang="en">The seller sends payment details in Telegram.</span></div>
+      <div><b><span lang="ru">Комиссию сети платит покупатель</span><span lang="en">The buyer pays the network fee</span></b><span lang="ru">Должна прийти полная сумма тарифа.</span><span lang="en">The full tariff amount must arrive.</span></div>
+      <div><b><span lang="ru">Без возврата после выдачи ключа</span><span lang="en">No refunds once the key is issued</span></b><span lang="ru">Поэтому сначала 7 дней бесплатно.</span><span lang="en">That is why you get 7 free days first.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="steps" id="how">
+  <div class="wrap center">
+    <p class="kicker" data-r><span lang="ru">Как купить</span><span lang="en">How to buy</span></p>
+    <h2 data-w><span lang="ru">Четыре шага <em>до ключа</em></span><span lang="en">Four steps <em>to your key</em></span></h2>
+    <div class="steplist" id="steplist">
+      <div class="step" data-r><h3 data-w><span lang="ru">Напишите продавцу</span><span lang="en">Message the seller</span></h3><p lang="ru" data-w>@mr_Aziy пришлёт установщик. Пробный период начнётся при первом запуске.</p><p lang="en" data-w>@mr_Aziy sends the installer. The trial starts on first launch.</p></div>
+      <div class="step" data-r><h3 data-w><span lang="ru">Скопируйте код компьютера</span><span lang="en">Copy the machine code</span></h3><p lang="ru" data-w>Он в окне активации. Ключ привязывается к этому ПК.</p><p lang="en" data-w>It is in the activation window. The key is tied to this PC.</p></div>
+      <div class="step" data-r><h3 data-w><span lang="ru">Оплатите тариф</span><span lang="en">Pay for a term</span></h3><p lang="ru" data-w>USDT по TRC20, затем пришлите хэш перевода.</p><p lang="en" data-w>USDT on TRC20, then send the transaction hash.</p></div>
+      <div class="step" data-r><h3 data-w><span lang="ru">Вставьте ключ</span><span lang="en">Paste the key</span></h3><p lang="ru" data-w>Подписка включится сразу.</p><p lang="en" data-w>The subscription starts at once.</p><span class="mono">TC1-…</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap center">
+    <p class="kicker" data-r>FAQ</p>
+    <h2 data-w><span lang="ru">Частые <em>вопросы</em></span><span lang="en">Common <em>questions</em></span></h2>
+    <div class="list" data-r>
+      <details><summary><span><span lang="ru">Программа торгует за меня?</span><span lang="en">Does the app trade for me?</span></span><i></i></summary><div class="ans"><div>
+        <p lang="ru">Нет. Все решения принимаете вы. Trading Coach следит за риском, блокирует торговлю при нарушении правил и помогает разбирать сделки.</p>
+        <p lang="en">No. You make every decision. Trading Coach watches risk, locks trading when rules are broken and helps you review trades.</p></div></div></details>
+      <details><summary><span><span lang="ru">Это безопасно для моих средств?</span><span lang="en">Is it safe for my funds?</span></span><i></i></summary><div class="ans"><div>
+        <p lang="ru">Нужны API-ключи только с правом торговли, без права вывода. Ключи хранятся на вашем компьютере и никуда не отправляются.</p>
+        <p lang="en">The app needs trade-only API keys with no withdrawal rights. Keys stay on your computer and are not sent anywhere.</p></div></div></details>
+      <details><summary><span><span lang="ru">Работает на Mac или телефоне?</span><span lang="en">Does it run on Mac or a phone?</span></span><i></i></summary><div class="ans"><div>
+        <p lang="ru">Нет, только Windows 10 и 11.</p><p lang="en">No, Windows 10 and 11 only.</p></div></div></details>
+      <details><summary><span><span lang="ru">Можно перенести ключ на другой компьютер?</span><span lang="en">Can I move the key to another PC?</span></span><i></i></summary><div class="ans"><div>
+        <p lang="ru">Ключ привязан к коду компьютера. При замене ПК напишите продавцу с новым кодом.</p>
+        <p lang="en">The key is tied to the machine code. If you change PCs, message the seller with the new code.</p></div></div></details>
+      <details><summary><span><span lang="ru">Что будет, когда подписка закончится?</span><span lang="en">What happens when the subscription ends?</span></span><i></i></summary><div class="ans"><div>
+        <p lang="ru">Аналитика и дневник останутся доступны, а новые сделки через программу будут закрыты до продления. Программа напомнит заранее.</p>
+        <p lang="en">Analytics and the journal stay available, but new trades through the app are blocked until you renew. The app reminds you ahead of time.</p></div></div></details>
+      <details><summary><span><span lang="ru">Обновления входят в подписку?</span><span lang="en">Are updates included?</span></span><i></i></summary><div class="ans"><div>
+        <p lang="ru">Да. О новых версиях пишем в канале @tradingcoach_app.</p><p lang="en">Yes. New versions are announced in the @tradingcoach_app channel.</p></div></div></details>
+      <details><summary><span><span lang="ru">Гарантирует ли программа прибыль?</span><span lang="en">Does it guarantee profit?</span></span><i></i></summary><div class="ans"><div>
+        <p lang="ru">Нет. Торговля фьючерсами связана с высоким риском. Программа помогает соблюдать собственные правила, но не гарантирует результат.</p>
+        <p lang="en">No. Futures trading carries high risk. The app helps you follow your own rules but does not guarantee results.</p></div></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="buy">
+  <div class="wrap center">
+    <h2 data-w><span lang="ru">Начните с <em>семи бесплатных дней</em></span><span lang="en">Start with <em>seven free days</em></span></h2>
+    <p class="muted" data-w><span lang="ru">Покупка, продление и вопросы — в Telegram</span><span lang="en">Purchase, renewal and questions on Telegram</span></p>
+    <div class="contact" data-r><span class="handle" id="handle">@mr_Aziy</span><button class="copy" id="copy-handle" type="button"><span lang="ru">Скопировать</span><span lang="en">Copy</span></button></div>
+    <div class="ctas" data-r>
+      <a class="btn solid" href="https://t.me/mr_Aziy" target="_blank" rel="noopener"><span lang="ru">Написать продавцу</span><span lang="en">Message the seller</span><span class="arr">→</span></a>
+      <a class="btn" href="https://t.me/tradingcoach_app" target="_blank" rel="noopener"><span lang="ru">Канал с новостями</span><span lang="en">News channel</span><span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Trading Coach · <span lang="ru">программа для Windows</span><span lang="en">Windows app</span> · t.me/tradingcoach_app</span>
+    <span lang="ru">Не является инвестиционной рекомендацией. Торговля криптофьючерсами связана с высоким риском потери средств.</span>
+    <span lang="en">Not investment advice. Crypto futures trading carries a high risk of loss.</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (!reduce) root.classList.add("js");
+  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+  function ease(t) { return 1 - Math.pow(1 - t, 3); }
+  function smooth(t) { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  var vh = innerHeight;
+
+  /* ---------- тарифы (как в seller.json) ---------- */
+  var PRICES = [{ m: 1, p: 29 }, { m: 3, p: 75 }, { m: 6, p: 135 }, { m: 12, p: 239 }];
+  function renderTiers() {
+    var en = root.lang === "en", base = PRICES[0].p;
+    document.getElementById("tiers").innerHTML = PRICES.map(function (t) {
+      var per = t.p / t.m, save = Math.round((1 - per / base) * 100);
+      var perS = (per % 1 ? per.toFixed(1) : String(per));
+      var term = en ? t.m + (t.m === 1 ? " month" : " months") : t.m + " " + (t.m === 1 ? "месяц" : t.m < 5 ? "месяца" : "месяцев");
+      var perTxt = en ? "≈ " + perS + " / month" : "≈ " + perS.replace(".", ",") + " в месяц";
+      return '<div class="tier' + (t.m === 12 ? ' best" data-badge="' + (en ? "Best value" : "Выгоднее всего") : "") + '" data-r>' +
+        '<span class="term">' + term + "</span>" +
+        '<span class="pr">' + t.p + "<small> USDT</small></span>" +
+        '<span class="per">' + perTxt + (save > 0 ? " · <b>−" + save + "%</b>" : "") + "</span></div>";
+    }).join("");
+    reveals = Array.prototype.slice.call(document.querySelectorAll("[data-r]"));
+  }
+
+  /* ---------- слова: обернуть каждое слово, чтобы они появлялись по одному ---------- */
+  function wrapWords(node, cls) {
+    Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+      if (n.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          var s = document.createElement("span");
+          s.className = cls;
+          s.textContent = part;
+          frag.appendChild(s);
+        });
+        node.replaceChild(frag, n);
+      } else if (n.nodeType === 1) wrapWords(n, cls);
+    });
+  }
+  function inLang(w, stop) {
+    var l = w.parentElement;
+    while (l && l !== stop.parentElement) { if (l.hasAttribute("lang") && l !== root) return l.getAttribute("lang") === root.lang; l = l.parentElement; }
+    return true;
+  }
+  var units = Array.prototype.slice.call(document.querySelectorAll("[data-w]")).map(function (el) {
+    wrapWords(el, "wd");
+    return { el: el, all: Array.prototype.slice.call(el.querySelectorAll(".wd")), words: [], big: /^H[12]$/.test(el.tagName), q: !!el.closest(".show") };
+  });
+  function recacheWords() {
+    units.forEach(function (u) { u.words = u.all.filter(function (w) { return inLang(w, u.el); }); u.on = undefined; u.all.forEach(function (w) { w.classList.remove("in"); }); });
+  }
+  function setWords(u, on) {
+    if (u.on === on) return;
+    u.on = on;
+    var n = u.words.length;
+    u.words.forEach(function (w, i) {
+      w.style.transitionDelay = (on ? i * Math.min(0.07, 0.9 / n) : (n - 1 - i) * 0.015).toFixed(3) + "s";
+      w.classList.toggle("in", on);
+    });
+  }
+
+  /* ---------- hero: слова появляются при загрузке ---------- */
+  var hero = document.getElementById("hero"), heroCopy = document.getElementById("hero-copy");
+  var heroWords = [];
+  Array.prototype.slice.call(document.querySelectorAll("[data-load]")).forEach(function (el) {
+    wrapWords(el, "wd");
+  });
+  function playHero() {
+    heroWords = Array.prototype.slice.call(hero.querySelectorAll(".wd")).filter(function (w) { return inLang(w, hero); });
+    heroWords.forEach(function (w, i) { w.style.transitionDelay = (0.15 + i * 0.07).toFixed(2) + "s"; w.classList.add("in"); });
+    hero.classList.add("ready");
+  }
+
+  /* ---------- язык ---------- */
+  var reveals = [];
+  function setLang(l) {
+    root.lang = l;
+    document.querySelectorAll(".lang button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.l === l)); });
+    try { localStorage.setItem("tc-lang", l); } catch (e) {}
+    renderTiers();
+    recacheWords();
+    if (hero.classList.contains("ready")) playHero();
+    if (window.__tcScreen) window.__tcScreen();
+    requestTick();
+  }
+  document.querySelectorAll(".lang button").forEach(function (b) { b.addEventListener("click", function () { setLang(b.dataset.l); }); });
+
+  /* ---------- манифест ---------- */
+  ["manifesto", "manifesto-en"].forEach(function (id) {
+    var el = document.getElementById(id);
+    wrapWords(el, "w");
+    el.querySelectorAll(".g .w").forEach(function (w) { w.classList.add("gold"); });
+  });
+
+  /* ---------- прокрутка: всё считается от положения, поэтому работает и вниз, и вверх ---------- */
+  var bar = document.getElementById("top-bar");
+  var show = document.getElementById("show"), stick = show.querySelector(".stick"), cap1 = document.getElementById("cap1");
+  var chapters = Array.prototype.slice.call(document.querySelectorAll(".chapter"));
+  var screens = Array.prototype.slice.call(document.querySelectorAll(".screens figure"));
+  var dots = Array.prototype.slice.call(document.querySelectorAll(".dots i"));
+  var steplist = document.getElementById("steplist");
+  var activeShot = -1, showQ = 0;
+
+  function frame() {
+    ticking = false;
+    bar.classList.toggle("solid", scrollY > 40);
+    if (reduce) { showChapter(currentChapter()); laptopQ(0.92); return; }
+
+    // hero уходит вверх и растворяется
+    var h = clamp(scrollY / (vh * 0.8), 0, 1);
+    heroCopy.style.transform = "translateY(" + (-h * 70).toFixed(1) + "px)";
+    heroCopy.style.opacity = (1 - ease(h)).toFixed(3);
+
+    // витрина с ноутбуком
+    var sr = show.getBoundingClientRect();
+    showQ = clamp(-sr.top / (sr.height - vh), 0, 1);
+    var enter = clamp((vh - sr.top) / vh, 0, 1);               // секция въезжает снизу
+    laptopQ(showQ, enter);
+    cap1.style.opacity = (1 - smooth((showQ - 0.2) / 0.12)).toFixed(3);
+    cap1.style.transform = "translateY(" + (-smooth((showQ - 0.2) / 0.12) * 30).toFixed(1) + "px)";
+    // в конце витрины ноутбук плавно уходит, а не остаётся обрезанным
+    var out = smooth((showQ - 0.88) / 0.1);
+    stick.style.opacity = (1 - out).toFixed(3);
+    stick.style.transform = out > 0 ? "scale(" + (1 - out * 0.06).toFixed(4) + ")" : "";
+
+    // блоки целиком
+    for (var i = 0; i < reveals.length; i++) {
+      var el = reveals[i], r = el.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) continue;
+      var zoom = el.getAttribute("data-r") === "zoom";
+      var inP = clamp((vh - r.top) / (vh * (zoom ? 0.6 : 0.28)), 0, 1);
+      var outP = clamp(r.bottom / (vh * 0.22), 0, 1);
+      var k = ease(Math.min(inP, outP));
+      el.style.opacity = String(zoom ? 0.3 + 0.7 * k : k);
+      el.style.transform = zoom ? "scale(" + (0.9 + 0.1 * k) + ")" : "translateY(" + ((1 - k) * 36) + "px)";
+    }
+
+    // слова
+    for (var j = 0; j < units.length; j++) {
+      var u = units[j];
+      if (u.q) { setWords(u, enter > 0.55 && showQ < 0.2); continue; }
+      var ur = u.el.getBoundingClientRect();
+      if (ur.height === 0) continue;
+      if (ur.top < vh * 0.86) setWords(u, true);
+      else if (ur.top > vh * 0.98) setWords(u, false);
+    }
+
+    // манифест: слова загораются по одному
+    var man = document.getElementById(root.lang === "en" ? "manifesto-en" : "manifesto");
+    var mr = man.getBoundingClientRect();
+    var mp = clamp((vh * 0.85 - mr.top) / (mr.height + vh * 0.35), 0, 1);
+    var words = man.querySelectorAll(".w");
+    var lit = mp * words.length;
+    for (var m = 0; m < words.length; m++) words[m].style.opacity = String(0.14 + 0.86 * clamp(lit - m, 0, 1));
+
+    var st = steplist.getBoundingClientRect();
+    steplist.style.setProperty("--line-p", String(clamp((vh * 0.9 - st.top) / (vh * 0.5), 0, 1)));
+    showChapter(currentChapter());
+  }
+  function currentChapter() {
+    var best = 0, bestD = Infinity;
+    chapters.forEach(function (c, i) {
+      var r = c.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - vh / 2);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+    return best;
+  }
+  function showChapter(n) {
+    chapters.forEach(function (c, i) { c.classList.toggle("on", i === n); });
+    if (n === activeShot) return;
+    activeShot = n;
+    screens.forEach(function (s, i) { s.classList.toggle("on", i === n); });
+    dots.forEach(function (d, i) { d.classList.toggle("on", i === n); });
+  }
+  var ticking = false;
+  function requestTick() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  addEventListener("scroll", requestTick, { passive: true });
+  addEventListener("resize", function () { vh = innerHeight; resizeBg(); if (window.__tcResize) window.__tcResize(); requestTick(); });
+
+  /* ---------- буквы под курсором и «магнитные» кнопки ---------- */
+  function wrapChars(word) {
+    if (word.querySelector(".ch")) return;
+    var txt = word.textContent;
+    word.textContent = "";
+    for (var i = 0; i < txt.length; i++) {
+      var c = document.createElement("span");
+      c.className = "ch";
+      c.textContent = txt[i];
+      word.appendChild(c);
+    }
+  }
+  if (fine && !reduce) {
+    document.querySelectorAll(".wd, .manifesto .w").forEach(wrapChars);
+    var lit = [];
+    function cool() { lit.forEach(function (c) { c.classList.remove("hot", "warm"); }); lit = []; }
+    document.addEventListener("pointerover", function (e) {
+      var c = e.target;
+      if (!c.classList || !c.classList.contains("ch")) { cool(); return; }
+      cool();
+      c.classList.add("hot"); lit.push(c);
+      [c.previousElementSibling, c.nextElementSibling].forEach(function (n) { if (n) { n.classList.add("warm"); lit.push(n); } });
+    }, { passive: true });
+    document.querySelectorAll(".btn").forEach(function (b) {
+      b.classList.add("mag");
+      b.addEventListener("pointermove", function (e) {
+        var r = b.getBoundingClientRect();
+        var dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        b.style.transform = "translate(" + (dx * 0.14).toFixed(1) + "px," + (dy * 0.24 - 2).toFixed(1) + "px)";
+      });
+      b.addEventListener("pointerleave", function () { b.style.transform = ""; });
+    });
+  }
+
+  /* ---------- фон: два медленных света и пылинки в луче ---------- */
+  var cv = document.getElementById("bg"), ctx = cv.getContext("2d"), W = 0, H = 0, dpr = 1, dust = [];
+  function resizeBg() {
+    dpr = Math.min(devicePixelRatio || 1, 1.5);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.round(Math.min(70, W * H / 22000));
+    dust = [];
+    for (var i = 0; i < n; i++) dust.push({ x: Math.random() * W, y: Math.random() * H, r: 0.4 + Math.random() * 1.1, s: 3 + Math.random() * 9, p: Math.random() * 6.28, d: 0.3 + Math.random() * 0.7 });
+    if (reduce) drawBg(20);
+  }
+  function blob(x, y, r, c, a) {
+    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, "rgba(" + c + "," + a + ")");
+    g.addColorStop(1, "rgba(" + c + ",0)");
+    ctx.fillStyle = g;
+    ctx.fillRect(x - r, y - r, r * 2, r * 2);
+  }
+  function drawBg(t) {
+    ctx.clearRect(0, 0, W, H);
+    var M = Math.max(W, H);
+    blob(W * (0.28 + 0.1 * Math.sin(t * 0.021)), H * (0.18 + 0.08 * Math.cos(t * 0.017)), M * 0.62, "201,180,138", 0.085);
+    blob(W * (0.78 + 0.08 * Math.cos(t * 0.015)), H * (0.82 + 0.07 * Math.sin(t * 0.019)), M * 0.55, "110,120,200", 0.06);
+    var sy = scrollY * 0.04;
+    for (var i = 0; i < dust.length; i++) {
+      var d = dust[i];
+      var y = ((d.y - t * d.s - sy * d.d) % H + H) % H;
+      var x = d.x + Math.sin(t * 0.2 + d.p) * 14;
+      var a = 0.08 + 0.16 * (0.5 + 0.5 * Math.sin(t * 0.6 + d.p));
+      ctx.beginPath();
+      ctx.arc(x, y, d.r, 0, 6.283);
+      ctx.fillStyle = "rgba(236,226,205," + a.toFixed(3) + ")";
+      ctx.fill();
+    }
+  }
+  var bgRun = !reduce, t0 = performance.now();
+  function bgLoop(now) { if (!bgRun) return; drawBg((now - t0) / 1000); requestAnimationFrame(bgLoop); }
+  document.addEventListener("visibilitychange", function () { bgRun = !document.hidden && !reduce; if (bgRun) requestAnimationFrame(bgLoop); });
+  resizeBg();
+  if (!reduce) requestAnimationFrame(bgLoop);
+
+  /* ---------- ноутбук ---------- */
+  var laptopQ = function () {};
+  try { laptopQ = makeLaptop() || laptopQ; } catch (e) { document.getElementById("gl-fallback").hidden = false; }
+
+  function makeLaptop() {
+    var T3 = window.THREE, canvas = document.getElementById("gl");
+    if (!T3) { document.getElementById("gl-fallback").hidden = false; return null; }
+    var renderer = new T3.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.75));
+    renderer.outputEncoding = T3.sRGBEncoding;
+    renderer.toneMapping = T3.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.0;
+    renderer.physicallyCorrectLights = true;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = T3.PCFSoftShadowMap;
+    var scene = new T3.Scene();
+    var camera = new T3.PerspectiveCamera(26, 1, 0.05, 100);
+
+    // тёмная фотостудия для съёмки техники: чёрные стены, длинные световые полосы и софтбокс сверху
+    var pm = new T3.PMREMGenerator(renderer), env = new T3.Scene();
+    env.add(new T3.Mesh(new T3.BoxGeometry(30, 16, 30), new T3.MeshBasicMaterial({ color: 0x050506, side: T3.BackSide })));
+    function panel(w, h, col, k, x, y, z, look) {
+      var m = new T3.Mesh(new T3.PlaneGeometry(w, h), new T3.MeshBasicMaterial({ color: new T3.Color(col).multiplyScalar(k), side: T3.DoubleSide }));
+      m.position.set(x, y, z); m.lookAt(look ? look[0] : 0, look ? look[1] : 0, look ? look[2] : 0); env.add(m);
+    }
+    panel(1.0, 9, 0xffffff, 7, -7, 3, 3);            // световая полоса слева
+    panel(1.0, 9, 0xfff1dc, 6, 7, 3, 2);             // световая полоса справа
+    panel(8, 4, 0xffffff, 2.2, 0, 7.5, 2);           // софтбокс сверху
+    panel(10, 0.6, 0xc9b48a, 2.5, 0, 0.4, -8);       // тёплая полоса сзади — контур
+    panel(6, 2, 0xb8c6ff, 0.8, 0, 2, 10);            // слабый холодный свет спереди
+    scene.environment = pm.fromScene(env, 0.02).texture;
+    var key = new T3.DirectionalLight(0xfff3e2, 2.2); key.position.set(2.5, 6, 3.5);
+    key.castShadow = true; key.shadow.mapSize.set(2048, 2048); key.shadow.bias = -0.0004; key.shadow.normalBias = 0.01; key.shadow.radius = 5;
+    var sc = key.shadow.camera; sc.left = -3; sc.right = 3; sc.top = 3; sc.bottom = -3; sc.near = 1; sc.far = 14;
+    scene.add(key);
+    var rim = new T3.DirectionalLight(0xc8d2ff, 1.1); rim.position.set(-5, 3, -4); scene.add(rim);
+
+    function canvasTex(w, h, draw, srgb) {
+      var c = document.createElement("canvas"); c.width = w; c.height = h;
+      draw(c.getContext("2d"), w, h);
+      var t = new T3.CanvasTexture(c);
+      if (srgb !== false) t.encoding = T3.sRGBEncoding;
+      t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      return t;
+    }
+    function rrect(w, h, r) {
+      var s = new T3.Shape(), x = -w / 2, y = -h / 2;
+      s.moveTo(x + r, y); s.lineTo(x + w - r, y); s.quadraticCurveTo(x + w, y, x + w, y + r);
+      s.lineTo(x + w, y + h - r); s.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      s.lineTo(x + r, y + h); s.quadraticCurveTo(x, y + h, x, y + h - r);
+      s.lineTo(x, y + r); s.quadraticCurveTo(x, y, x + r, y);
+      return s;
+    }
+    function slab(w, h, r, t, b, seg) {
+      var g = new T3.ExtrudeGeometry(rrect(w - 2 * b, h - 2 * b, Math.max(r - b, 0.002)),
+        { depth: Math.max(t - 2 * b, 0.0005), bevelEnabled: true, bevelThickness: b, bevelSize: b, bevelSegments: seg || 6, curveSegments: 20 });
+      g.translate(0, 0, b);
+      return g;
+    }
+    function flat(w, h, r) { var g = new T3.ShapeGeometry(rrect(w, h, r), 20); g.rotateX(-Math.PI / 2); return g; }
+    function shade(m, cast, recv) { m.castShadow = !!cast; m.receiveShadow = !!recv; return m; }
+
+    // микрорельеф металла (пескоструйная обработка)
+    var grain = canvasTex(512, 512, function (c, w, h) {
+      var d = c.createImageData(w, h);
+      for (var i = 0; i < d.data.length; i += 4) { var v = 118 + Math.random() * 20; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
+      c.putImageData(d, 0, 0);
+    }, false);
+    grain.wrapS = grain.wrapT = T3.RepeatWrapping; grain.repeat.set(3, 3);
+
+    var W = 3.2, D = 2.2, T = 0.072, LH = 2.1, LT = 0.045;
+    var alu = new T3.MeshPhysicalMaterial({ color: 0x15161a, metalness: 0.8, roughness: 0.48, clearcoat: 0.2, clearcoatRoughness: 0.5,
+      bumpMap: grain, bumpScale: 0.0012, envMapIntensity: 1 });
+    var chamfer = new T3.MeshPhysicalMaterial({ color: 0x9a9ca4, metalness: 1, roughness: 0.14 });
+    var laptop = new T3.Group(); scene.add(laptop);
+
+    // корпус
+    var baseG = slab(W, D, 0.14, T, 0.016); baseG.rotateX(-Math.PI / 2);
+    laptop.add(shade(new T3.Mesh(baseG, [alu, chamfer]), true, true));
+    var top = T + 0.0004;
+    laptop.add(shade(Object.assign(new T3.Mesh(flat(2.68, 1.0, 0.035), new T3.MeshStandardMaterial({ color: 0x060607, roughness: 0.85 })), {}), false, true));
+    laptop.children[laptop.children.length - 1].position.set(0, top, -0.45);
+
+    // подсветка клавиатуры: свет между клавишами
+    var GRAD = ["#ff2f86", "#8f55ff", "#22c4ff", "#2fe0a0", "#ffb03a", "#ff2f86"];
+    function gradient(c, w) { var g = c.createLinearGradient(0, 0, w, 0); GRAD.forEach(function (col, i) { g.addColorStop(i / (GRAD.length - 1), col); }); return g; }
+    var rgbTex = canvasTex(512, 64, function (c, w, h) { c.fillStyle = gradient(c, w); c.fillRect(0, 0, w, h); });
+    rgbTex.wrapS = T3.RepeatWrapping;
+    var rgbMat = new T3.MeshBasicMaterial({ map: rgbTex, color: 0x000000, toneMapped: false });
+    var rgb = new T3.Mesh(flat(2.6, 0.96, 0.03), rgbMat); rgb.position.set(0, top + 0.0006, -0.45); laptop.add(rgb);
+
+    // клавиши с надписями
+    var U = 0.168, GAP = 0.02, KH = 0.016, KZ0 = -0.45 - 0.48;
+    var rows = [
+      [0.55, [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], ["esc","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","prt","del"]],
+      [1, [1,1,1,1,1,1,1,1,1,1,1,1,1,2], ["~","1","2","3","4","5","6","7","8","9","0","-","=","⟵"]],
+      [1, [1.5,1,1,1,1,1,1,1,1,1,1,1,1,1.5], ["tab","Q","W","E","R","T","Y","U","I","O","P","[","]","\\"]],
+      [1, [1.75,1,1,1,1,1,1,1,1,1,1,1,2.25], ["caps","A","S","D","F","G","H","J","K","L",";","'","enter"]],
+      [1, [2.25,1,1,1,1,1,1,1,1,1,1,2.75], ["shift","Z","X","C","V","B","N","M",",",".","/","shift"]],
+      [1, [1.25,1.25,1.25,5.75,1.25,1.25,1,1,1], ["ctrl","fn","alt","","alt","ctrl","◂","▾","▸"]]
+    ];
+    var keyG = slab(1, 1, 0.18, KH, 0.0045, 4); keyG.rotateX(-Math.PI / 2);
+    var count = rows.reduce(function (s, r) { return s + r[1].length; }, 0);
+    var keyMat = new T3.MeshPhysicalMaterial({ color: 0x0b0c0e, roughness: 0.62, metalness: 0.0, clearcoat: 0.15, clearcoatRoughness: 0.6, envMapIntensity: 0.6 });
+    var keys = shade(new T3.InstancedMesh(keyG, keyMat, count), true, true);
+    var dummy = new T3.Object3D(), idx = 0, zc = KZ0, legendsAt = [];
+    rows.forEach(function (row) {
+      var rh = row[0] * U, x = -7.5 * U, z = zc + rh / 2;
+      row[1].forEach(function (u, i) {
+        dummy.position.set(x + u * U / 2, top + 0.001, z);
+        dummy.scale.set(u * U - GAP, 1, rh - GAP);
+        dummy.updateMatrix(); keys.setMatrixAt(idx++, dummy.matrix);
+        legendsAt.push([x + u * U / 2, z, row[2][i], u, row[0]]);
+        x += u * U;
+      });
+      zc += rh;
+    });
+    laptop.add(keys);
+    // надписи: серые при выключенном экране, светятся цветом подсветки при включённом
+    function legendCanvas(lit) {
+      return canvasTex(2048, 756, function (c, w, h) {
+        c.clearRect(0, 0, w, h);
+        c.fillStyle = lit ? gradient(c, w) : "#ffffff";
+        c.textAlign = "center"; c.textBaseline = "middle";
+        legendsAt.forEach(function (k) {
+          if (!k[2]) return;
+          var px = (k[0] / 2.6 + 0.5) * w, pz = ((k[1] + 0.45) / 0.96 + 0.5) * h;
+          var big = k[2].length === 1 || /^F\d/.test(k[2]) === false && k[2].length <= 2;
+          c.font = (k[4] < 1 ? "600 24px " : big ? "600 46px " : "600 26px ") + "Manrope, 'Segoe UI', sans-serif";
+          c.fillText(k[2], px, pz);
+        });
+      });
+    }
+    var legOff = new T3.MeshBasicMaterial({ map: legendCanvas(false), transparent: true, color: 0x5a5c62, depthWrite: false });
+    var legOn = new T3.MeshBasicMaterial({ map: legendCanvas(true), transparent: true, opacity: 0, depthWrite: false, toneMapped: false, blending: T3.AdditiveBlending });
+    [legOff, legOn].forEach(function (m) {
+      m.map.repeat.set(1, 1);
+      var p = new T3.Mesh(new T3.PlaneGeometry(2.6, 0.96), m);
+      p.rotation.x = -Math.PI / 2; p.position.set(0, top + 0.001 + KH + 0.0008, -0.45); laptop.add(p);
+    });
+
+    // решётки динамиков
+    var grill = canvasTex(128, 512, function (c, w, h) {
+      c.fillStyle = "#000"; c.fillRect(0, 0, w, h); c.fillStyle = "#fff";
+      for (var y = 6; y < h; y += 10) for (var x = 5 + ((y / 10) % 2) * 5; x < w; x += 10) { c.beginPath(); c.arc(x, y, 2.4, 0, 6.283); c.fill(); }
+    }, false);
+    [-1, 1].forEach(function (s) {
+      var g = new T3.Mesh(flat(0.24, 0.96, 0.03), new T3.MeshStandardMaterial({ color: 0x030304, roughness: 0.9, alphaMap: grill, transparent: true }));
+      g.position.set(s * 1.47, top + 0.0005, -0.45); laptop.add(g);
+    });
+
+    // тачпад: стекло с тонкой фаской
+    var pad = shade(new T3.Mesh(flat(1.34, 0.74, 0.05), new T3.MeshPhysicalMaterial({ color: 0x101114, metalness: 0.2, roughness: 0.3, clearcoat: 1, clearcoatRoughness: 0.15, envMapIntensity: 0.8 })), false, true);
+    pad.position.set(0, top + 0.0006, 0.5); laptop.add(pad);
+    var padRim = new T3.Mesh(flat(1.355, 0.755, 0.056), chamfer);
+    padRim.position.set(0, top + 0.0003, 0.5); laptop.add(padRim);
+
+    // световая полоса на переднем торце
+    var bar3 = new T3.Mesh(new T3.BoxGeometry(2.2, 0.005, 0.004), new T3.MeshBasicMaterial({ map: rgbTex, color: 0x000000, toneMapped: false }));
+    bar3.position.set(0, T * 0.35, D / 2 + 0.001); laptop.add(bar3);
+
+    // шарнир
+    var hinge = shade(new T3.Mesh(new T3.CylinderGeometry(0.03, 0.03, 2.4, 32), new T3.MeshPhysicalMaterial({ color: 0x141518, metalness: 0.9, roughness: 0.3 })), true, true);
+    hinge.rotation.z = Math.PI / 2; hinge.position.set(0, T + 0.018, -D / 2 + 0.05); laptop.add(hinge);
+
+    // пол: настоящая тень + мягкая контактная тень + отсвет экрана
+    var floor = shade(new T3.Mesh(new T3.PlaneGeometry(14, 14), new T3.ShadowMaterial({ opacity: 0.55 })), false, true);
+    floor.rotation.x = -Math.PI / 2; floor.position.y = -0.001; laptop.add(floor);
+    var contact = new T3.Mesh(new T3.PlaneGeometry(4.2, 3.2), new T3.MeshBasicMaterial({ transparent: true, depthWrite: false, toneMapped: false,
+      map: canvasTex(256, 256, function (c, w, h) { var g = c.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2); g.addColorStop(0, "rgba(0,0,0,.9)"); g.addColorStop(0.6, "rgba(0,0,0,.45)"); g.addColorStop(1, "rgba(0,0,0,0)"); c.fillStyle = g; c.fillRect(0, 0, w, h); }) }));
+    contact.rotation.x = -Math.PI / 2; contact.position.y = -0.0015; laptop.add(contact);
+    var halo = new T3.Mesh(new T3.PlaneGeometry(8, 6), new T3.MeshBasicMaterial({ transparent: true, depthWrite: false, toneMapped: false, blending: T3.AdditiveBlending, opacity: 0,
+      map: canvasTex(256, 256, function (c, w, h) { var g = c.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2); g.addColorStop(0, "rgba(160,170,255,.35)"); g.addColorStop(0.5, "rgba(201,180,138,.12)"); g.addColorStop(1, "rgba(0,0,0,0)"); c.fillStyle = g; c.fillRect(0, 0, w, h); }) }));
+    halo.rotation.x = -Math.PI / 2; halo.position.y = -0.002; laptop.add(halo);
+
+    // крышка: снаружи тёмный металл с диагональным разрезом и точечной матрицей, без логотипов
+    var lidOut = canvasTex(1024, 672, function (c, w, h) {
+      c.fillStyle = "#2a2b30"; c.fillRect(0, 0, w, h);
+      c.fillStyle = "#34353b"; c.beginPath(); c.moveTo(0, 0); c.lineTo(w * 0.6, 0); c.lineTo(w * 0.32, h); c.lineTo(0, h); c.closePath(); c.fill();
+      c.strokeStyle = "rgba(255,255,255,.3)"; c.lineWidth = 2; c.beginPath(); c.moveTo(w * 0.6, 0); c.lineTo(w * 0.32, h); c.stroke();
+    });
+    lidOut.repeat.set(1 / W, 1 / LH); lidOut.offset.set(0.5, 0.5);
+    var dots = canvasTex(1024, 672, function (c, w, h) {
+      c.fillStyle = "#000"; c.fillRect(0, 0, w, h);
+      for (var y = 60; y < h - 50; y += 15) for (var x = 50; x < w * 0.6; x += 15) {
+        var edge = w * 0.6 - (y / h) * w * 0.28 - 20;
+        if (x > edge) continue;
+        var a = 0.25 + 0.75 * Math.pow(Math.max(0, 1 - x / edge), 0.6) * (0.4 + 0.6 * Math.random());
+        c.fillStyle = "rgba(255,240,215," + a.toFixed(2) + ")"; c.beginPath(); c.arc(x, y, 2.4, 0, 6.283); c.fill();
+      }
+    });
+    dots.repeat.copy(lidOut.repeat); dots.offset.copy(lidOut.offset);
+    var lidMat = new T3.MeshPhysicalMaterial({ color: 0xffffff, map: lidOut, metalness: 0.8, roughness: 0.45, clearcoat: 0.25, clearcoatRoughness: 0.4,
+      bumpMap: grain, bumpScale: 0.0012, emissive: 0xffe9cc, emissiveMap: dots, emissiveIntensity: 0.0 });
+    var lid = new T3.Group(); lid.position.set(0, T + 0.004, -D / 2 + 0.05); laptop.add(lid);
+    var lidG = slab(W, LH, 0.14, LT, 0.012); lidG.translate(0, LH / 2, -LT);
+    lid.add(shade(new T3.Mesh(lidG, [lidMat, chamfer]), true, true));
+
+    // рамка и экран: глянцевое стекло, изображение светится изнутри и отражает студию
+    var bezel = shade(new T3.Mesh(new T3.ShapeGeometry(rrect(W - 0.02, LH - 0.02, 0.13), 20),
+      new T3.MeshPhysicalMaterial({ color: 0x030304, roughness: 0.08, clearcoat: 1, clearcoatRoughness: 0.04 })), false, true);
+    bezel.position.set(0, LH / 2, 0.0015); lid.add(bezel);
+    var SW = 3.06, SH = SW * 0.625;
+    var scr = document.createElement("canvas"); scr.width = 1600; scr.height = 1000;
+    var sctx = scr.getContext("2d");
+    var scrTex = new T3.CanvasTexture(scr); scrTex.encoding = T3.sRGBEncoding; scrTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    var screenMat = new T3.MeshStandardMaterial({ color: 0x000000, roughness: 0.05, metalness: 0, emissive: 0xffffff, emissiveMap: scrTex, emissiveIntensity: 1.15, envMapIntensity: 0.6 });
+    var screen = new T3.Mesh(new T3.PlaneGeometry(SW, SH), screenMat);
+    screen.position.set(0, LH - 0.05 - SH / 2, 0.003); lid.add(screen);
+    var cam = new T3.Mesh(new T3.CircleGeometry(0.011, 20), new T3.MeshPhysicalMaterial({ color: 0x15161c, roughness: 0.1, clearcoat: 1 }));
+    cam.position.set(0, LH - 0.026, 0.003); lid.add(cam);
+
+    var icon = new Image(), app = new Image();
+    icon.src = document.querySelector(".brand img").src;
+    app.src = document.querySelector("#gl-fallback img").src;
+    var last = { b: -1, a: -1, p: -1 };
+    function drawScreen(boot, appA, prog) {
+      if (Math.abs(last.b - boot) < 0.003 && Math.abs(last.a - appA) < 0.003 && Math.abs(last.p - prog) < 0.003) return;
+      last = { b: boot, a: appA, p: prog };
+      var w = scr.width, h = scr.height;
+      sctx.globalAlpha = 1; sctx.fillStyle = "#000"; sctx.fillRect(0, 0, w, h);
+      var b = boot * (1 - appA);
+      if (b > 0.001) {
+        sctx.globalAlpha = b;
+        var g = sctx.createRadialGradient(w / 2, h * 0.45, 0, w / 2, h * 0.45, w * 0.45);
+        g.addColorStop(0, "rgba(50,70,130,.32)"); g.addColorStop(1, "rgba(0,0,0,0)");
+        sctx.fillStyle = g; sctx.fillRect(0, 0, w, h);
+        var s = 200, ix = w / 2 - s / 2, iy = h * 0.42 - s / 2 - 20;
+        if (icon.complete && icon.naturalWidth) sctx.drawImage(icon, ix, iy, s, s);
+        sctx.fillStyle = "#ece8e1"; sctx.textAlign = "center"; sctx.textBaseline = "middle";
+        sctx.font = "300 52px Manrope, 'Segoe UI', sans-serif";
+        sctx.fillText("Trading Coach", w / 2, iy + s + 70);
+        var bw = 240, bx = w / 2 - bw / 2, by = iy + s + 136;
+        sctx.fillStyle = "rgba(255,255,255,.1)"; sctx.fillRect(bx, by, bw, 4);
+        sctx.fillStyle = "#c9b48a"; sctx.fillRect(bx, by, bw * prog, 4);
+      }
+      if (appA > 0.001 && app.complete && app.naturalWidth) {
+        sctx.globalAlpha = appA;
+        var k = w / app.naturalWidth, ah = app.naturalHeight * k;
+        sctx.fillStyle = "#0b0e14"; sctx.fillRect(0, 0, w, h);
+        sctx.drawImage(app, 0, (h - ah) / 2, w, ah);
+      }
+      sctx.globalAlpha = 1;
+      scrTex.needsUpdate = true;
+    }
+
+    // камера по ключевым кадрам: (прогресс, цель, наклон, поворот, ширина кадра)
+    var K = [
+      [0.00, [0, 0.10, 0.10], 40, -30, 6.0],
+      [0.16, [0, 0.18, 0.00], 32, -12, 4.9],
+      [0.50, [0, 0.95, -0.35], 13, 0, 4.7],
+      [0.84, [0, 1.12, -1.30], 9, 0, 3.95],
+      [1.00, [0, 1.12, -1.30], 9, 0, 3.95]
+    ];
+    var target = new T3.Vector3();
+    function pose(q) {
+      var i = 0; while (i < K.length - 2 && q > K[i + 1][0]) i++;
+      var a = K[i], b = K[i + 1], t = smooth((q - a[0]) / (b[0] - a[0]));
+      target.set(lerp(a[1][0], b[1][0], t), lerp(a[1][1], b[1][1], t), lerp(a[1][2], b[1][2], t));
+      var pitch = lerp(a[2], b[2], t) * Math.PI / 180, yaw = lerp(a[3], b[3], t) * Math.PI / 180, size = lerp(a[4], b[4], t);
+      if (camera.aspect < 1) size *= 0.84;                  // на телефоне ноутбук крупнее
+      var vf = camera.fov * Math.PI / 360, hf = Math.atan(Math.tan(vf) * camera.aspect);
+      var dist = Math.max(size / (2 * Math.tan(hf)), size * 0.68 / (2 * Math.tan(vf)));
+      camera.position.set(target.x + dist * Math.sin(yaw) * Math.cos(pitch), target.y + dist * Math.sin(pitch), target.z + dist * Math.cos(yaw) * Math.cos(pitch));
+      camera.lookAt(target);
+    }
+    function resize() {
+      var w = canvas.clientWidth, h = canvas.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    }
+    window.__tcResize = resize;
+
+    var Q = 0, E = 1, dirty = true, visible = false;
+    function apply(time) {
+      laptop.position.y = lerp(-1.1, 0, ease(clamp(E * 1.15, 0, 1)));
+      pose(Q);
+      var open = smooth((Q - 0.18) / 0.32);
+      lid.rotation.x = lerp(Math.PI / 2 - 0.004, -0.245, open);
+      var power = smooth((Q - 0.48) / 0.07);
+      var prog = clamp((Q - 0.5) / 0.1, 0, 1);
+      var appA = smooth((Q - 0.6) / 0.1);
+      drawScreen(power, appA, prog);
+      var glowK = 0.55 + 0.45 * Math.sin(time * 1.3);
+      rgbMat.color.setScalar(power * 0.32);
+      bar3.material.color.setScalar(power);
+      legOn.opacity = power;
+      legOff.opacity = 1 - power * 0.85;
+      rgbTex.offset.x = (time * 0.025) % 1;
+      lidMat.emissiveIntensity = (1 - open) * (0.16 + 0.2 * glowK);
+      halo.material.opacity = 0.2 + 0.8 * power;
+      renderer.render(scene, camera);
+    }
+    var tStart = performance.now(), running = false;
+    function loop(now) {
+      if (!visible) { running = false; return; }
+      apply((now - tStart) / 1000);
+      requestAnimationFrame(loop);
+    }
+    var io = new IntersectionObserver(function (es) {
+      visible = es[0].isIntersecting && !reduce;
+      if (visible && !running) { running = true; requestAnimationFrame(loop); }
+    }, { rootMargin: "200px" });
+    io.observe(show);
+    resize();
+    if (reduce) { setTimeout(function () { Q = 0.84; E = 1; apply(0); }, 400); }
+    return function (q, e) { Q = q; E = e === undefined ? 1 : e; if (reduce) apply(0); };
+  }
+
+  /* ---------- копирование ника ---------- */
+  document.getElementById("copy-handle").addEventListener("click", function (e) {
+    var btn = e.currentTarget;
+    var done = function () {
+      btn.querySelectorAll("span").forEach(function (s) { s.dataset.t = s.dataset.t || s.textContent; s.textContent = s.lang === "en" ? "Copied" : "Скопировано"; });
+      setTimeout(function () { btn.querySelectorAll("span").forEach(function (s) { s.textContent = s.dataset.t; }); }, 1500);
+    };
+    var select = function () { var r = document.createRange(); r.selectNodeContents(document.getElementById("handle")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    if (navigator.clipboard) navigator.clipboard.writeText("@mr_Aziy").then(done, select); else select();
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem("tc-lang"); } catch (e) {}
+  setLang(saved === "en" ? "en" : "ru");
+  frame();
+  requestAnimationFrame(function () { setTimeout(playHero, 80); });
+})();
+</script>
+
+</body>
+</html>
